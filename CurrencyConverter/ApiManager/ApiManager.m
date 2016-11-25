@@ -11,7 +11,7 @@
 #import "Manager.h"
 
 
-# pragma mark - const API
+# pragma mark - const API Manager
 
 static NSString *const kHostAdressMask = @"http://api.fixer.io";
 static NSString *const kMetod = @"/latest";
