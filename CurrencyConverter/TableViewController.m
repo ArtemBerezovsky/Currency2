@@ -8,11 +8,16 @@
 
 #import "TableViewController.h"
 #import "MyTableViewControllerProtocol.h"
+#import "DataSource.h"
+#import "Manager.h"
+#import "CurrencyModel.h"
+
 
 @interface TableViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
-@property (nonatomic, weak) NSNumber *selectedCurrencyNumber;
+@property (strong, nonatomic) DataSource *dataSourceProperty;
 @end
 
 @implementation TableViewController
@@ -21,7 +26,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"Select Currency";
-    self.selectedCurrencyNumber = 0;
+    Manager *currencyManager = [[Manager alloc]init];
+    DataSource *dataSource = [[DataSource alloc] initWithCurrencyManager: currencyManager];
+    self.dataSourceProperty = dataSource;
+    self.tableView.delegate = self.dataSourceProperty;
+    self.tableView.dataSource = self.dataSourceProperty;
+   
     
 }
 
@@ -50,8 +60,8 @@
 
 - (void) doneButtonClicked
 {
-    [self.delegate CloseVC];
-    [self.delegate didChangeCurrency: self.selectedCurrencyNumber];
+    [self.delegate didChangeCurrency: self.dataSourceProperty.selectedCurrencyCurrencyModel.code];
+    
     
 }
 /*

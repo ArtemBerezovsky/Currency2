@@ -8,16 +8,19 @@
 
 #import "CurrencyViewController.h"
 #import "MyTableViewControllerProtocol.h"
+#import "ApiManager.h"
+
 
 #pragma mark - constants
 
-static const float kRate = 62.5f;
-static NSString *kRUB = @"RUB";
-static NSString *kUSD = @"USD";
+
+static float kRate = 62.5f;
+static const float kUSDRate = 62.5f;
 static NSString *kValueDefault = @"0";
 
 
-@interface CurrencyViewController () <UITextFieldDelegate, MyTableViewControllerProtocol>
+
+@interface CurrencyViewController () <UITextFieldDelegate, MyTableViewControllerProtocol >
 
 @property (weak, nonatomic) IBOutlet UILabel *leftCurrency;
 @property (weak, nonatomic) IBOutlet UILabel *rightCurrency;
@@ -25,17 +28,21 @@ static NSString *kValueDefault = @"0";
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (assign, nonatomic) BOOL lastDot;
 @property (assign, nonatomic) BOOL rubIsLeft;
+@property (weak, nonatomic) IBOutlet UILabel *exchangeRateLabel;
 
 @end
 
 @implementation CurrencyViewController
-
+{
+    NSNumber *exchangeRate;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.rubIsLeft = YES;
     self.title = @"Обмен Валюты";
     self.valueTextField.delegate = self;
+    
 
 }
 
@@ -103,30 +110,41 @@ static NSString *kValueDefault = @"0";
 
 #pragma mark - MyTableViewControllerProtocol
 
-- (void) didChangeCurrency: (NSNumber *) selectedCurrency
-{
-    switch (selectedCurrency.integerValue)
-    {
-        case 0:
-            self.leftCurrency.text = kRUB;
-            self.rightCurrency.text = kUSD;
-            break;
-            
-        case 1:
-            self.leftCurrency.text = kUSD;
-            self.rightCurrency.text = kRUB;
-            
-        default:
-            NSLog(@"Incorrect  Value: %ld", (long)selectedCurrency.integerValue);
-            break;
-    }
-}
-
-
-- (void) CloseVC
+- (void) didChangeCurrency: (NSString *) selectedCurrency
 {
     [self.navigationController popViewControllerAnimated: YES];
+    self.rightCurrency.text = selectedCurrency;
+    typeof(self) __weak weakSelf = self;
+    ApiManager *objectApiManager = [[ApiManager alloc]init];
+    [objectApiManager getRatesWithResponseHandler:^(NSDictionary * _Nonnull dict) {
+       [weakSelf updateRate:dict
+                           :selectedCurrency];
+    }
+                         withFailureHandler:^(NSError * _Nonnull error) {
+                             [weakSelf sayAboutError];
+                         }];
+    
+    
+  
 }
+
+
+- (void)updateRate:(NSDictionary *)dict
+                  :(NSString *) selectedCurrency
+{
+    NSNumber *rate = dict[selectedCurrency];
+    exchangeRate = rate;
+    _exchangeRateLabel.text = [NSString stringWithFormat:@"Курс за 1 %@ составляет %@₽", selectedCurrency, exchangeRate];
+    //[self calculate];
+}
+
+ - (void) sayAboutError
+{
+        _exchangeRateLabel.text = @"Api service connect Error";
+}
+
+
+
 #pragma mark - delegateMetods
 
 - (BOOL) textField: (UITextField *)textField
@@ -159,13 +177,13 @@ shouldChangeCharactersInRange: (NSRange)range
     if([textField.text length] > 0 && [string isEqualToString: @""]){
         NSNumber *inputValue = [self conversion: [textField.text substringToIndex: [textField.text length]-1]];
         float result;
-        if (self.rubIsLeft == YES)
-        {
+        if (self.rubIsLeft == YES && [self.rightCurrency.text isEqualToString:@"USD"])
+        {   kRate = kUSDRate;
             result = inputValue.floatValue / kRate;
             
         }
         else
-        {
+        {   kRate = kUSDRate;
             result = inputValue.floatValue * kRate;
         }
         NSNumber *resultNumber = [NSNumber numberWithFloat: result];

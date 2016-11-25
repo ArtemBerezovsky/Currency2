@@ -13,8 +13,8 @@
 
 @required
 
--(void) didChangeCurrency: (NSNumber *) selectedCurrency;
--(void) CloseVC;
+-(void) didChangeCurrency: (NSString *) selectedCurrency;
+
 
 
 

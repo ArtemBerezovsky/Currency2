@@ -10,7 +10,12 @@
 		3FEC43331DCDCF920020FBDB /* CurrencyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC43321DCDCF920020FBDB /* CurrencyViewController.xib */; };
 		3FEC43411DCDECC70020FBDB /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC433F1DCDECC70020FBDB /* TableViewController.m */; };
 		3FEC43421DCDECC70020FBDB /* TableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC43401DCDECC70020FBDB /* TableViewController.xib */; };
+		5D0AD2E71DD9277800A55AC3 /* CurrencyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0AD2E61DD9277800A55AC3 /* CurrencyModel.m */; };
+		5D0AD2EA1DD92D9800A55AC3 /* Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0AD2E91DD92D9800A55AC3 /* Manager.m */; };
+		5D0AD2ED1DD9363200A55AC3 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0AD2EC1DD9363200A55AC3 /* DataSource.m */; };
+		5D5070DB1DDE622300395B09 /* RootWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5070DA1DDE622300395B09 /* RootWindow.m */; };
 		5D90EADE1DCD4F7000323819 /* MyUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D90EADD1DCD4F7000323819 /* MyUITextField.m */; };
+		5DD338E51DE62F2B00998202 /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD338E41DE62F2B00998202 /* ApiManager.m */; };
 		5DE6F8491DC65AD1001DC7A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE6F8481DC65AD1001DC7A5 /* main.m */; };
 		5DE6F84C1DC65AD1001DC7A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE6F84B1DC65AD1001DC7A5 /* AppDelegate.m */; };
 		5DE6F8541DC65AD1001DC7A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DE6F8531DC65AD1001DC7A5 /* Assets.xcassets */; };
@@ -43,8 +48,18 @@
 		3FEC433E1DCDECC70020FBDB /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		3FEC433F1DCDECC70020FBDB /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		3FEC43401DCDECC70020FBDB /* TableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewController.xib; sourceTree = "<group>"; };
+		5D0AD2E51DD9277800A55AC3 /* CurrencyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyModel.h; path = models/CurrencyModel.h; sourceTree = "<group>"; };
+		5D0AD2E61DD9277800A55AC3 /* CurrencyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyModel.m; path = models/CurrencyModel.m; sourceTree = "<group>"; };
+		5D0AD2E81DD92D9800A55AC3 /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Manager.h; path = Manager/Manager.h; sourceTree = "<group>"; };
+		5D0AD2E91DD92D9800A55AC3 /* Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Manager.m; path = Manager/Manager.m; sourceTree = "<group>"; };
+		5D0AD2EB1DD9363200A55AC3 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		5D0AD2EC1DD9363200A55AC3 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		5D5070D91DDE622300395B09 /* RootWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootWindow.h; path = RootWindow/RootWindow.h; sourceTree = "<group>"; };
+		5D5070DA1DDE622300395B09 /* RootWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootWindow.m; path = RootWindow/RootWindow.m; sourceTree = "<group>"; };
 		5D90EADC1DCD4F7000323819 /* MyUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUITextField.h; sourceTree = "<group>"; };
 		5D90EADD1DCD4F7000323819 /* MyUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUITextField.m; sourceTree = "<group>"; };
+		5DD338E31DE62F2B00998202 /* ApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApiManager.h; path = ApiManager/ApiManager.h; sourceTree = "<group>"; };
+		5DD338E41DE62F2B00998202 /* ApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApiManager.m; path = ApiManager/ApiManager.m; sourceTree = "<group>"; };
 		5DE6F8441DC65AD1001DC7A5 /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DE6F8481DC65AD1001DC7A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5DE6F84A1DC65AD1001DC7A5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -90,6 +105,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D0AD2E41DD9208A00A55AC3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5D0AD2E51DD9277800A55AC3 /* CurrencyModel.h */,
+				5D0AD2E61DD9277800A55AC3 /* CurrencyModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		5DD338E21DE62F0000998202 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				5DD338E31DE62F2B00998202 /* ApiManager.h */,
+				5DD338E41DE62F2B00998202 /* ApiManager.m */,
+			);
+			name = network;
+			sourceTree = "<group>";
+		};
 		5DE6F83B1DC65AD1001DC7A5 = {
 			isa = PBXGroup;
 			children = (
@@ -114,9 +147,13 @@
 		5DE6F8461DC65AD1001DC7A5 /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
+				5D0AD2E41DD9208A00A55AC3 /* Models */,
+				5DD338E21DE62F0000998202 /* network */,
 				5DE6F87D1DC65FB6001DC7A5 /* UI */,
 				5DE6F84A1DC65AD1001DC7A5 /* AppDelegate.h */,
 				5DE6F84B1DC65AD1001DC7A5 /* AppDelegate.m */,
+				5D5070D91DDE622300395B09 /* RootWindow.h */,
+				5D5070DA1DDE622300395B09 /* RootWindow.m */,
 				5DE6F8531DC65AD1001DC7A5 /* Assets.xcassets */,
 				5DE6F8551DC65AD1001DC7A5 /* LaunchScreen.storyboard */,
 				5DE6F8581DC65AD1001DC7A5 /* Info.plist */,
@@ -169,6 +206,10 @@
 				3FEC433F1DCDECC70020FBDB /* TableViewController.m */,
 				3FEC43401DCDECC70020FBDB /* TableViewController.xib */,
 				5DEDDEC21DCFAEEB005E2A02 /* MyTableViewControllerProtocol.h */,
+				5D0AD2E81DD92D9800A55AC3 /* Manager.h */,
+				5D0AD2E91DD92D9800A55AC3 /* Manager.m */,
+				5D0AD2EB1DD9363200A55AC3 /* DataSource.h */,
+				5D0AD2EC1DD9363200A55AC3 /* DataSource.m */,
 				5D90EADC1DCD4F7000323819 /* MyUITextField.h */,
 				5D90EADD1DCD4F7000323819 /* MyUITextField.m */,
 			);
@@ -309,11 +350,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DD338E51DE62F2B00998202 /* ApiManager.m in Sources */,
 				5DE6F84C1DC65AD1001DC7A5 /* AppDelegate.m in Sources */,
 				3FEC43411DCDECC70020FBDB /* TableViewController.m in Sources */,
+				5D0AD2ED1DD9363200A55AC3 /* DataSource.m in Sources */,
+				5D0AD2E71DD9277800A55AC3 /* CurrencyModel.m in Sources */,
 				5DE6F8801DC65FF5001DC7A5 /* CurrencyViewController.m in Sources */,
 				5DE6F8491DC65AD1001DC7A5 /* main.m in Sources */,
+				5D5070DB1DDE622300395B09 /* RootWindow.m in Sources */,
 				5D90EADE1DCD4F7000323819 /* MyUITextField.m in Sources */,
+				5D0AD2EA1DD92D9800A55AC3 /* Manager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

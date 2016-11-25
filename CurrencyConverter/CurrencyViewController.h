@@ -9,7 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "TableViewController.h"
 
+@class CurrencyModel;
+
+#pragma mark - constants
+
+static NSString *kRUB = @"RUB";
+static NSString *kUSD = @"USD";
+static NSString *kGPB = @"GPB";
+static NSString *kAUD = @"AUD";
+
+
 @interface CurrencyViewController : UIViewController
+
 
 
 @end

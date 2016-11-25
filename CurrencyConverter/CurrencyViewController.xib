@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CurrencyViewController">
             <connections>
+                <outlet property="exchangeRateLabel" destination="MFs-Fr-eUT" id="KH1-nb-U7e"/>
                 <outlet property="leftCurrency" destination="M89-yw-iUP" id="eQ0-bM-aRv"/>
                 <outlet property="resultLabel" destination="iLs-Cx-Ox5" id="A8e-yp-6rc"/>
                 <outlet property="rightCurrency" destination="bqA-uV-zZG" id="4DW-FS-tny"/>
@@ -18,64 +19,121 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTH-mf-bWb">
-                    <frame key="frameInset" minX="149" minY="613" width="76" height="34"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLs-Cx-Ox5">
+                    <frame key="frameInset" minX="266" minY="324" width="101" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="RUB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M89-yw-iUP">
+                    <frame key="frameInset" minX="63" minY="283" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9la-Wp-KDl" customClass="MyUITextField">
+                    <frame key="frameInset" minX="36" minY="324" width="97" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exC-Uc-5oe">
+                    <frame key="frameInset" minX="117" minY="193" width="140" height="30"/>
+                    <state key="normal" title="CurrencySelection"/>
+                    <connections>
+                        <action selector="CurrencyTwo:" destination="-1" eventType="touchUpInside" id="JjN-aW-CXf"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqA-uV-zZG">
+                    <frame key="frameInset" minX="259" minY="284" width="60" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTH-mf-bWb">
+                    <frame key="frameInset" minX="149" minY="504" width="76" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="Calculate"/>
                     <connections>
                         <action selector="calculateButtonClicked:" destination="-1" eventType="touchUpInside" id="hI4-JH-XTT"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLs-Cx-Ox5">
-                    <frame key="frameInset" minX="253" minY="327" width="106" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RUB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M89-yw-iUP">
-                    <frame key="frameInset" minX="63" minY="283" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwp-Wm-rff">
-                    <frame key="frameInset" minX="156" minY="277" width="62" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwp-Wm-rff">
+                    <frame key="frameInset" minX="156" minY="279" width="62" height="32"/>
                     <state key="normal" title="change"/>
                     <connections>
                         <action selector="changeButtonClicked:" destination="-1" eventType="touchUpInside" id="MMR-VY-F6Y"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqA-uV-zZG">
-                    <frame key="frameInset" minX="270" minY="283" width="60" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Currency rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nk0-4n-d6C">
+                    <frame key="frameInset" minX="128" minY="362" width="118" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9la-Wp-KDl" customClass="MyUITextField">
-                    <frame key="frameInset" minX="36" minY="324" width="97" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFs-Fr-eUT">
+                    <frame key="frameInset" minX="42" minY="411" width="290" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exC-Uc-5oe">
-                    <frame key="frameInset" minX="110" minY="239" width="140" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="CurrencySelection"/>
-                    <connections>
-                        <action selector="CurrencyTwo:" destination="-1" eventType="touchUpInside" id="JjN-aW-CXf"/>
-                    </connections>
-                </button>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="24.5" y="52.5"/>
+            <constraints>
+                <constraint firstItem="9la-Wp-KDl" firstAttribute="top" secondItem="M89-yw-iUP" secondAttribute="bottom" constant="20" id="2AK-gP-3eE"/>
+                <constraint firstItem="exC-Uc-5oe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="2yb-hU-ifH"/>
+                <constraint firstAttribute="bottom" secondItem="iLs-Cx-Ox5" secondAttribute="bottom" constant="388" id="3y0-ZE-Ntt"/>
+                <constraint firstAttribute="trailing" secondItem="exC-Uc-5oe" secondAttribute="trailing" constant="200" id="69E-hg-oK6"/>
+                <constraint firstItem="UTH-mf-bWb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="169" id="8tk-bD-JBG"/>
+                <constraint firstItem="M89-yw-iUP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="283" id="DoU-Qv-P6e"/>
+                <constraint firstItem="Uwp-Wm-rff" firstAttribute="leading" secondItem="M89-yw-iUP" secondAttribute="trailing" constant="71" id="Hvp-T9-1xP"/>
+                <constraint firstItem="exC-Uc-5oe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="193" id="IdH-B7-fi4"/>
+                <constraint firstAttribute="bottom" secondItem="9la-Wp-KDl" secondAttribute="bottom" constant="382" id="Iwx-78-tyw"/>
+                <constraint firstItem="iLs-Cx-Ox5" firstAttribute="top" secondItem="bqA-uV-zZG" secondAttribute="bottom" constant="24" id="JxG-7s-LbL"/>
+                <constraint firstAttribute="trailing" secondItem="exC-Uc-5oe" secondAttribute="trailing" constant="137" id="Ldv-4L-pi9"/>
+                <constraint firstItem="exC-Uc-5oe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="240" id="R1e-Mo-uYY"/>
+                <constraint firstAttribute="bottom" secondItem="UTH-mf-bWb" secondAttribute="bottom" constant="92" id="SeA-6S-LZ9"/>
+                <constraint firstItem="bqA-uV-zZG" firstAttribute="leading" secondItem="Uwp-Wm-rff" secondAttribute="trailing" constant="81" id="TMI-zg-NPR"/>
+                <constraint firstItem="UTH-mf-bWb" firstAttribute="top" secondItem="Uwp-Wm-rff" secondAttribute="bottom" constant="300" id="ZS4-SD-oeq"/>
+                <constraint firstAttribute="trailing" secondItem="UTH-mf-bWb" secondAttribute="trailing" constant="169" id="aMI-iO-hzi"/>
+                <constraint firstItem="exC-Uc-5oe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="250" id="dCy-0m-bQG"/>
+                <constraint firstAttribute="trailing" secondItem="bqA-uV-zZG" secondAttribute="trailing" constant="35" id="eih-a5-KUu"/>
+                <constraint firstItem="exC-Uc-5oe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="150" id="gDs-jh-MGR"/>
+                <constraint firstItem="Uwp-Wm-rff" firstAttribute="top" secondItem="exC-Uc-5oe" secondAttribute="bottom" constant="55" id="iel-OJ-BHa"/>
+                <constraint firstItem="M89-yw-iUP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="63" id="lbC-Q7-FoH"/>
+                <constraint firstItem="exC-Uc-5oe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="137" id="qv7-le-IZU"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="2yb-hU-ifH"/>
+                    <exclude reference="69E-hg-oK6"/>
+                    <exclude reference="IdH-B7-fi4"/>
+                    <exclude reference="Ldv-4L-pi9"/>
+                    <exclude reference="R1e-Mo-uYY"/>
+                    <exclude reference="dCy-0m-bQG"/>
+                    <exclude reference="gDs-jh-MGR"/>
+                    <exclude reference="qv7-le-IZU"/>
+                    <exclude reference="DoU-Qv-P6e"/>
+                    <exclude reference="lbC-Q7-FoH"/>
+                    <exclude reference="Hvp-T9-1xP"/>
+                    <exclude reference="iel-OJ-BHa"/>
+                    <exclude reference="2AK-gP-3eE"/>
+                    <exclude reference="Iwx-78-tyw"/>
+                    <exclude reference="TMI-zg-NPR"/>
+                    <exclude reference="eih-a5-KUu"/>
+                    <exclude reference="3y0-ZE-Ntt"/>
+                    <exclude reference="JxG-7s-LbL"/>
+                    <exclude reference="8tk-bD-JBG"/>
+                    <exclude reference="SeA-6S-LZ9"/>
+                    <exclude reference="ZS4-SD-oeq"/>
+                    <exclude reference="aMI-iO-hzi"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="19.5" y="52.5"/>
         </view>
     </objects>
 </document>

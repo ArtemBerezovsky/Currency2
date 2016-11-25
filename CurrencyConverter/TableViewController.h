@@ -12,6 +12,7 @@
 
 @interface TableViewController : UIViewController
 
-@property (weak, nonatomic ) id <MyTableViewControllerProtocol> delegate;
+@property (weak, nonatomic) id <MyTableViewControllerProtocol> delegate;
+
 
 @end
